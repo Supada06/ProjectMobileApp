@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
-
 class AddressFieldWidget extends StatefulWidget {
   final TextEditingController controller;
 
-   AddressFieldWidget({
+  AddressFieldWidget({
     Key? key,
     required this.controller,
   }) : super(key: key);
@@ -14,7 +13,6 @@ class AddressFieldWidget extends StatefulWidget {
 }
 
 class _AddressFieldWidgetState extends State<AddressFieldWidget> {
-
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -30,13 +28,11 @@ class _AddressFieldWidgetState extends State<AddressFieldWidget> {
             borderRadius: BorderRadius.circular(25),
           ),
         ),
-         keyboardType: TextInputType.text,
-          cursorColor: Colors.red,
+        keyboardType: TextInputType.text,
+        cursorColor: Colors.red,
         autofillHints: [AutofillHints.addressState],
-       validator: (address) {
-          if (address != null && 
-              !RegExp(r'^a-zA-Z0-9$')
-                  .hasMatch(address)) {
+        validator: (address) {
+          if (address != null && !RegExp(r'\w$').hasMatch(address)) {
             return 'Enter a valid address ';
           }
           return null;
